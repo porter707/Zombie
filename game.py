@@ -6,19 +6,19 @@ class character:
         self.hp = hp
         self.attack = attack
 
-    def quit(self):
+    def quit(self, encounter):
         print ("%s searches for an escape, but gets cornered by a horde of Zombies, your body was ripped apart and eaten..." % self.name)
         print ("%s survived for a few more days before being eaten during his sleep..." %hero_2.name)
         print ("It is unknown what happened to %s."%hero_3.name)
         sys.exit()
 
-    def help(self):
+    def help(self, encounter):
         print Commands.keys()
 
-    def explore(self):
+    def explore(self, encounter):
         route = random.randint(0, 10)
 
-    def flee(self):
+    def flee(self, encounter):
     	if encounter == True:
 		runchance = random.randint(0, 2)
 		if runchance == 1:
@@ -29,7 +29,7 @@ class character:
 	else:
             print("There is no need to flee right now.")
             
-    def attack(self):
+    def attack(self, encounter):
         hitchance = random.randint(0, 2)
   
 Commands = {
@@ -61,16 +61,17 @@ raw_input('...')
 while True:
 	choice = raw_input('>')
 	zombie = random.randint(0,11)
-	if zombie == 5:
+	if zombie <= 5:
 		encounter = True
-		print ("A lone Zombie walks towards you")
-	elif zombie == 7:
-		print ("A horde of Zombies run towards you")
-       		encounter = True
+		print ("Zombies walk towards you")
+		while encounter == True:
+			encounter_option = raw_input('>')
+			if encounter_option in Commands.keys():
+				Commands [encounter_option] (hero, encounter)
 	else:
 		encounter = False
 
 	if choice in Commands.keys():
-		Commands [choice] (hero)
+		Commands [choice] (hero, encounter)
 	else:
 		print ("I didn't understand that command...")
