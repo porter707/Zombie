@@ -16,7 +16,31 @@ class character:
         print Commands.keys()
 
     def explore(self, encounter):
-        route = random.randint(0, 10)
+        if encounter == True:
+            print ("You can't explore right now...")
+            encounter = True
+        else:
+            route = random.randint(0, 9)
+            if route == 1:
+                print ("You walk down a dark lane, looking for supplies.")
+            elif route == 2:
+                print ("You see a building with a light on inside, you go to explore.")
+            elif route == 3:
+                print ("You find a carpark, and decide to check the area.")
+            elif route == 4:
+                print ("You slip past a horde of zombies and search the militry camp.")
+            elif route == 5:
+                print ("You hear a sound coming from a nearby building and decide to explore.")
+            elif route == 6:
+                print ("You think you see a person running, and decide to follow.")
+            elif route == 7:
+                print ("You walk the streets in hope of finding something.")
+            elif route == 8:
+                print ("You enter the construction site looking for useful supplies.")
+            else:
+                print ("You explored the area but found nothing of interest.")
+            encounter = False
+        return encounter
 
     def flee(self, encounter):
         if encounter == True:
@@ -43,6 +67,7 @@ class character:
             hitchance = random.randint(0, 2)
             if hitchance == 1:
                 print ("You struck the zombie with a crowbar, it falls to the ground.")
+                encounter = False
             else:
                 deathchance = random.randint(0, 2)
                 if deathchance == 1:
@@ -53,8 +78,10 @@ class character:
                     sys.exit()
                 else:
                     print ("You tried to strike the zombie but missed...")
+                    encounter = True
         else:
             print ("There is no need to attack anything right now.")
+        return encounter
                     
             
   
