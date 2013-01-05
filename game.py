@@ -1,4 +1,4 @@
-import pygame, random, sys
+import random, sys
 
 class character:
     def __init__(self, name, hp, attack):
@@ -19,18 +19,44 @@ class character:
         route = random.randint(0, 10)
 
     def flee(self, encounter):
-    	if encounter == True:
-		runchance = random.randint(0, 2)
-		if runchance == 1:
-			print ("You successfully got away.")
-			encounter = False
-            	else:
-			print ("You tried to run but got trapped by zombies.")
-	else:
+        if encounter == True:
+            runchance = random.randint(0, 2)
+            if runchance == 1:
+                print ("You successfully got away.")
+                encounter = False
+            else:
+                print ("You tried to run but got trapped by zombies.")
+                encounter = True
+                deathchance = random.randint(0,11)
+                if deathchance == 1:
+                    print ("You look for an escape, but you're surrounded...")
+                    raw_input("...")
+                    print ("You close your eyes and accpet your fate...")
+                    sys.exit()
+        else:
             print("There is no need to flee right now.")
+            encounter = False
+        return encounter
             
     def attack(self, encounter):
-        hitchance = random.randint(0, 2)
+        if encounter == True:
+            hitchance = random.randint(0, 2)
+            if hitchance == 1:
+                print ("You struck the zombie with a crowbar, it falls to the ground.")
+            else:
+                deathchance = random.randint(0, 2)
+                if deathchance == 1:
+                    print ("You struck the zombie with a crowbar, it falls to the ground and grabs hold of your leg, taking a bite...")
+                    raw_input("...")
+                    print ("As you try to run the horde catches up with you and pin you to the ground, slowly eating you alive...")
+                    print ("It is unknown what happened to the your friends that day...")
+                    sys.exit()
+                else:
+                    print ("You tried to strike the zombie but missed...")
+        else:
+            print ("There is no need to attack anything right now.")
+                    
+            
   
 Commands = {
   'quit': character.quit,
@@ -59,19 +85,21 @@ print ("You quickly realised that the camp was overrun and was not safe..")
 raw_input('...')
 
 while True:
-	choice = raw_input('>')
-	zombie = random.randint(0,11)
-	if zombie <= 5:
-		encounter = True
-		print ("Zombies walk towards you")
-		while encounter == True:
-			encounter_option = raw_input('>')
-			if encounter_option in Commands.keys():
-				Commands [encounter_option] (hero, encounter)
-	else:
-		encounter = False
+    choice = raw_input('>')
+    zombie = random.randint(0,11)
+    if zombie <= 5:
+        encounter = True
+        print ("Zombies walk towards you")
+        while encounter == True:
+            encounter_option = raw_input('>')
+            if encounter_option in Commands.keys():
+                encounter = Commands [encounter_option] (hero, encounter)
+            else:
+                print ("The Zombies get closer...")
+    else:
+        encounter = False
 
-	if choice in Commands.keys():
-		Commands [choice] (hero, encounter)
-	else:
-		print ("I didn't understand that command...")
+    if choice in Commands.keys():
+        Commands [choice] (hero, encounter)
+    else:
+        print ("I didn't understand that command...")
