@@ -21,22 +21,106 @@ class character:
             encounter = True
         else:
             route = random.randint(0, 9)
+            subroute = random.randint(0,4)
             if route == 1:
                 print ("You walk down a dark lane, looking for supplies.")
+                if subroute == 1:
+                    print ("You found some food and drink, scattered around the lane.")
+                elif subroute == 2:
+                    print("You found nothing in the lane, but avoided a horde of passing zombies")
+                elif subroute == 3:
+                    print ("A horde of zombies block your exit from the lane, you and your friends try to fight off the horde...")
+                    raw_input("...")
+                    print ("%s scraficed his life, in an attempt to save you...\nYou tried to push through the horde taking down a few zombies.\nA zombie grabs hold of your back and bites you...\nyou manage to escape but eventually give up and sit down and wait for it to end. "% hero_2.name)
+                    sys.exit()
+                else:
+                    print ("You found nothing of interest.")
+                
             elif route == 2:
                 print ("You see a building with a light on inside, you go to explore.")
+                if subroute == 1:
+                    print ("You find some tins of food on the floor, it looks like someone has recently been staying here.")
+                elif subroute == 2:
+                    print("As you enter the house, you see eaten remains of some people.")
+                elif subroute == 3:
+                    print ("You enter the house and find nothing, but avoid a horde of zombies.")
+                else:
+                    print ("You found nothing of interest.")
             elif route == 3:
                 print ("You find a carpark, and decide to check the area.")
+                if subroute == 1:
+                    print ("You try the doors on some cars but they are all locked.")
+                elif subroute == 2:
+                    print("You see a car with an open door, you enter the car but the keys are missing.")
+                elif subroute == 3:
+                    print ("You see a car with the engine running, you go towards the car but notice a horde of zombies around it.")
+                    raw_input("...")
+                    print ("You try to fight of the horde, you see your chance and jump in the car...\nAs you put the car into gear a zombie grabs hold of you, %s pulls the zombie away from you and kills it as he turns around another zombie manages to bite him.\nYou get out of the car and kill the zombie, eventually you all get in the car and drive away.\nIt is unkown if anyone survived."% hero_3.name)
+                    sys.exit()
+                else:
+                    print ("You found nothing of interest.")
             elif route == 4:
                 print ("You slip past a horde of zombies and search the militry camp.")
+                if subroute == 1:
+                    print ("You find some useful survival gear.")
+                elif subroute == 2:
+                    print("As you look around the camp you notice that it is overrun and decide to leave.")
+                elif subroute == 3:
+                    print ("You enter the camp and find some rifles, a horde of zombies approch and you fire at them, they fall to the ground.")
+                    raw_input("...")
+                    print ("The noise made from firing the guns alert all the nearby hordes of zombies, you try to hold out as long as you can, but eventually get overrun.")
+                    sys.exit()
+                else:
+                    print ("You found nothing of interest.")
             elif route == 5:
                 print ("You hear a sound coming from a nearby building and decide to explore.")
+                if subroute == 1:
+                    print ("You enter a the building and find a man being eaten alive, you kill the zombie and leave.")
+                elif subroute == 2:
+                    print("You enter the building to find a radio making a noise, you try to use the radio to call for help but get no response.")
+                elif subroute == 3:
+                    print ("You find nothing in the building and couldn't work out where the sound was coming from.")
+                else:
+                    print ("You found nothing of interest.")
             elif route == 6:
                 print ("You think you see a person running, and decide to follow.")
+                if subroute == 1:
+                    print ("You try to catch up with the person, but lost them.")
+                elif subroute == 2:
+                    print("You try to catch up with the person but run into a horde of zombies and are forced to run back.")
+                elif subroute == 3:
+                    print ("You catch up with the person and get them to stop.")
+                    raw_input("...")
+                    print ("You talk to the person who turns out to be a young girl, she explains to you that ")
+                    sys.exit()
+                else:
+                    print ("You found nothing of interest.")
             elif route == 7:
                 print ("You walk the streets in hope of finding something.")
+                if subroute == 1:
+                    print ("")
+                elif subroute == 2:
+                    print("")
+                elif subroute == 3:
+                    print ("")
+                    raw_input("...")
+                    print ("")
+                    sys.exit()
+                else:
+                    print ("You found nothing of interest.")
             elif route == 8:
                 print ("You enter the construction site looking for useful supplies.")
+                if subroute == 1:
+                    print ("")
+                elif subroute == 2:
+                    print("")
+                elif subroute == 3:
+                    print ("")
+                    raw_input("...")
+                    print ("")
+                    sys.exit()
+                else:
+                    print ("You found nothing of interest.")
             else:
                 print ("You explored the area but found nothing of interest.")
             encounter = False
